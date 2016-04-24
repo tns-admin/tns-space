@@ -12,9 +12,12 @@ handlers:
   static_dir: stylesheets
 - url: /.*
   script: main.app
+  login: required
+  secure: always
 
 libraries:
 - name: webapp2
   version: 2.5.2
 - name: jinja2
   version: 2.6
+

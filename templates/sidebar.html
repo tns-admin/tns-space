@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<div id="sidebar">
+
+{% for item in data.sidebar.pages %}
+   {% if item.page == data.sidebar.current_page %} 
+    <b>{{ item.text }}</b><br>
+   {% else %} 
+    <a href={{ item.url }}>{{ item.text }}</a><br>
+   {% endif %} 
+{% endfor %}
+</div>
+
+</body>
+</html>
+{% endautoescape %}

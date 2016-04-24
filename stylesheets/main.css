@@ -2,3 +2,23 @@ body {
   font-family: Verdana, Helvetica, sans-serif;
   background-color: #DDDDDD;
 }
+
+#header {
+    background-color:#ccddff;
+    color: #000033;
+    text-align:right;
+    padding:2px;
+}
+#sidebar {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:100px;
+    float:left;
+    padding:5px;          
+}
+#content {
+    width:350px;
+    float:left;
+    padding:10px;        
+}
