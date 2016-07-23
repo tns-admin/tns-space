@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<div class="main-container">
+  {% include "/templates/header/header.html" %}
+
+  <!-- LEFT-CONTAINER -->
+    <div class="left-container container">
+      <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+        <h2 class="titular">CLIENT PROFILE</h2>
+        <ul class="menu-box-menu">
+          <li>
+              <a class="menu-box-tab" href="/client?page=general"><span class="icon entypo-doc-landscape scnd-font-color"></span>General</a>
+          </li>
+          <li>
+              <a class="menu-box-tab" href="/client?page=personal"><span class="icon entypo-vcard scnd-font-color"></span>Personal</a>
+          </li>
+          <li>
+              <a class="menu-box-tab" href="/client?page=agreements"><span class="icon entypo-attach scnd-font-color"></span>Agreements</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MIDDLE-CONTAINER -->
+    <div class="middle-container container">
+      {% include data.body_template %}
+    </div>
+
+</div>
+
+
+</body>
+</html>
+{% endautoescape %}

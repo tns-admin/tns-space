@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<div id="content">
+
+  <table width=100%>
+  <tr>
+    <td>
+      <h2>T&amp;S Space Users</h2>
+    </td>
+    <td>
+      <div class="fileUpload btn btn-primary" style="float:right;">
+          <span>Add User</span>
+      </div>
+    </td>
+  </tr>
+  </table>
+
+  <table class="results-table" width=100%>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+    {% for item in data.users.all_users %}
+        <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        </tr>
+    {% endfor %}
+  </table>
+
+</div>
+
+</body>
+</html>
+{% endautoescape %}

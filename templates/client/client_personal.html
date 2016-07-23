@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+function edit_enable_all () {
+  $(".edit-pen").show ();
+  $("#main-pen").hide ();
+  $("#main-cross").show ();
+}
+
+function edit_disable_all () {
+  $(".edit-pen").hide ();
+  $("#main-cross").hide ();
+  $("#main-pen").show ();
+}
+
+function edit_enable (field_name) {
+  $("#" + field_name + "_view").hide ();
+  $("#" + field_name + "_edit").show ();
+}
+
+function edit_save (field_name) {
+  $("#" + field_name + "_edit").hide ();
+  $("#" + field_name + "_view").show ();
+}
+
+function edit_cancel (field_name) {
+  $("#" + field_name + "_edit").hide ();
+  $("#" + field_name + "_view").show ();
+}
+</script>
+
+</head>
+<body>
+
+<div id="content">
+  <h1>Personal Info
+    <a id="main-pen" href="javascript:edit_enable_all ()">
+      <span class="edit-icon entypo-pencil scnd-font-color"></span>
+    </a>
+    <a id="main-cross" href="javascript:edit_disable_all ()" style="display:none;">
+      <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+    </a>
+  </h1>
+
+  <table class="form-table">
+    <tr>
+      <td style="width: 20%">First Name</td>
+      <td>
+        <!-- View mode -->
+        <div id="first_name_view">Ivan
+          <a class="edit-pen" href="javascript:edit_enable ('first_name')">
+            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+          </a>
+        </div>
+
+        <!-- Edit mode -->
+        <div id="first_name_edit" style="display:none;">
+          <input type="text" name="first_name" value="Ivan" style="margin-left:0px">
+          <a href="javascript:edit_save ('first_name')">
+            <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+          </a>
+          <a href="javascript:edit_cancel ('first_name')">
+            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+          </a>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Middle Name(s)</td><td>Petrovich
+        <a class="edit-pen" href="javascript:edit_enable ('middle_name')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>Susanin
+        <a class="edit-pen" href="javascript:edit_enable ('last_name')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>Male
+        <a class="edit-pen" href="javascript:edit_enable ('gender')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Nationality</td>
+      <td>British
+        <a class="edit-pen" href="javascript:edit_enable ('nationality')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Date of Birth</td>
+      <td>23/05/1788
+        <a class="edit-pen" href="javascript:edit_enable ('date_of_birth')">
+            <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <th colspan="2" style="text-align:left">Contact Information</th>
+    <tr>
+      <td>Address</td>
+      <td>25 James Street<br>London<br>WD5 2PT
+        <a class="edit-pen" href="javascript:edit_enable ('address')">
+            <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Telephone</td>
+      <td>07482957284
+        <a class="edit-pen" href="javascript:edit_enable ('telephone')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>ivan.susanin@gmail.com
+        <a class="edit-pen" href="javascript:edit_enable ('email')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>UK Entry Date</td>
+      <td>01/01/1900
+        <a class="edit-pen" href="javascript:edit_enable ('uk_entry_date')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Occupation</td>
+      <td>Tourism
+        <a class="edit-pen" href="javascript:edit_enable ('occupation')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Work Start Date</td>
+      <td>03/04/1912
+        <a class="edit-pen" href="javascript:edit_enable ('work_start_date')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+
+    <th colspan="2" style="text-align:left">Marital Status / Family</th>
+    <tr>
+      <td>Marital Status</td>
+      <td>Single
+        <a class="edit-pen" href="javascript:edit_enable ('marital_status')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td>Marriage Date</td>
+      <td>03/04/1912
+        <a class="edit-pen" href="javascript:edit_enable ('marriage_date')">
+          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+        </a>
+      </td>
+    </tr>
+
+    
+  </table>
+
+</div>
+</body>
+</html>
+{% endautoescape %}

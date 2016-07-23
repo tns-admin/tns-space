@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="block">
+    <ul class="header-menu horizontal-list">
+      <li>
+        <a class="header-menu-tab" href="/"><span class="icon entypo-home scnd-font-color"></span>Home</a>
+      </li>
+      <li>
+        <a class="header-menu-tab" href="clients"><span class="icon entypo-folder scnd-font-color"></span>Clients</a>
+      </li>
+      <!--
+      <li>
+        <a class="header-menu-tab" href=""><span class="icon entypo-bell scnd-font-color"></span>Notifications</a>
+        <a class="header-menu-number" href="">5</a>
+      </li>
+      -->
+      <li>
+        <a class="header-menu-tab" href="admin"><span class="icon fontawesome-cogs scnd-font-color"></span>Admin</a>
+      </li>
+  </ul>
+  <div class="profile-menu">
+    <p>{{ data.user.nickname () }}<a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
+    <div class="profile-picture small-profile-picture">
+        <img width="40px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg">
+    </div>
+    </div>
+  </header>
+
+<!--div id="header">
+  <table>
+    <tr>
+      <td>
+        <a href="/"><img src="/static/icons/homepage.jpg" alt="T&amp;S Space" width="42" height="42"></a>
+        <a href="/clients"><img src="/static/icons/clients.png" alt="Clients" width="42" height="42"></a>
+        <a href="/?page=users"><img src="/static/icons/users.jpg" alt="Users" width="42" height="42"></a>
+      </td>
+      <td>
+        <p> {{ data.user.nickname () }} <a href="{{ logout_url|safe }}"> logout</a> </p>
+      </td>
+    </tr>
+  </table>
+</div-->
+
+</body>
+</html>
+{% endautoescape %}

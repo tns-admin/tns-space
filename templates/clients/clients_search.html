@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<h1>Search Existing Clients</h1>
+
+<div>
+  <form>
+    <table class="form-table">
+      <tr>
+        <td width="150px">
+          Name
+        </td>
+        <td width="120px">
+          <input type="text" name="name">
+        <td>
+        <td>
+          Reference
+        </td>
+        <td>
+          <input type="text" name="reference">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Consultant
+        </td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="TG">Tatiana Gutu</option>
+            <option value="MC">Marina Cotiuc</option>
+          </select>
+        <td>
+        <td></td>
+        <td>
+          <input class="submit_button" type="submit" value="Search">
+        </td>
+      </tr>
+    </table>
+  </form>
+
+<table class = "results-table" width=720px>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Consultant</th>
+        <th>Projects</th>
+        <th>Projects Status</th>
+        <th>Payment Status</th>
+        <th>File</th>
+    </tr>
+    <tr>
+        <td>0001</td>
+        <td> <a href="client">Vasia Pupkin</a></td>
+        <td>TG</td>
+        <td>SA CHB</td>
+        <td>Complet</td>
+        <td>Paid</td>
+        <td>link</td>
+    </tr>
+    <tr>
+        <td>0002</td>
+        <td><a href="client">Victoria Scotch</a></td>
+        <td>MC</td>
+        <td>WTC MAT SA</td>
+        <td>In Progress</td>
+        <td>Need Payment</td>
+        <td>link</td>
+    </tr>
+    <tr>
+        <td>0003</td>
+        <td><a href="client">Ivan Susanin</a></td>
+        <td>TG</td>
+        <td>TCC NINO</td>
+        <td>Due in 2 days</td>
+        <td>Not Paid</td>
+        <td>link</td>
+    </tr>
+    <tr>
+        <td>0004</td>
+        <td><a href="client">Peter Pen</a></td>
+        <td>MC</td>
+        <td>OTR OTR</td>
+        <td>Overdue</td>
+        <td>Paid</td>
+        <td>link</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+</table>
+
+  </div>
+</body>
+</html>
+{% endautoescape %}

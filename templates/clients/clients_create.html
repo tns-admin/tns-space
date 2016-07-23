@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<h1>Create New Client</h1>
+
+<div>
+  <form>
+
+    <table class="form-table">
+      <tr>
+        <th colspan='4'>Basic Information</th>
+      </tr>
+      <tr>
+        <td style="width: 25%">First Name</td>
+        <td style="width: 25%"><input type="text" name="first_name"></td>
+        <td style="width: 25%">Last Name</td>
+        <td style="width: 25%"><input type="text" name="last_name"></td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </td>
+        <td>Date of Birth</td>
+        <td><input type="date" name="date_of_birth"></td>
+      </tr>
+      <tr>
+        <td>Marital Status</td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="S">Single</option>
+            <option value="M">Married</option>
+            <option value="D">Divorced</option>
+            <option value="P">Partners</option>
+          </select>
+        </td>
+        <td>Date of Marriage</td>
+        <td><input type="date" name="date_of_marriage"></td>
+      </tr>
+      <tr>
+        <td>Natinality</td>
+        <td><input type="text" name="nationality"></td>
+        <td>UK Entry</td>
+        <td><input type="date" name="date_of_uk_entry"></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Contacts</th>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td colspan='3'><textarea rows="5" name="nationality"> </textarea></td>
+      </tr>
+      <tr>
+        <td>Post Code</td>
+        <td><input type="text" name="nationality"></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Telephone</td>
+        <td><input type="text" name="telephone"></td>
+        <td>Email</td>
+        <td><input type="text" name="email"></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Employment</th>
+      </tr>
+      <tr>
+        <td>Employment Status</td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="E">Employed</option>
+            <option value="SE">Self-Employed</option>
+            <option value="U">Unemployed</option>
+          </select>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Job Title</td>
+        <td><input type="text" name="job_title"></td>
+        <td>Start Date</td>
+        <td><input type="date" name="date_of_job"></td>
+      </tr>
+      <tr>
+        <td>Nino</td>
+        <td><input type="text" name="nino"></td>
+        <td>UTR</td>
+        <td><input type="text" name="utr"></td>
+      </tr>
+      <tr>
+        <td>HO</td>
+        <td><input type="text" name="ho"></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Bank Details</th>
+      </tr>
+      <tr>
+        <td>Bank Name</td>
+        <td><input type="text" name="ho"></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Sort Code</td>
+        <td><input type="text" name="sord_code"></td>
+        <td>Account No.</td>
+        <td><input type="text" name="account_no"></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Partner</th>
+      </tr>
+      <tr>
+        <td style="width: 25%">First Name</td>
+        <td style="width: 25%"><input type="text" name="partner_first_name"></td>
+        <td style="width: 25%">Last Name</td>
+        <td style="width: 25%"><input type="text" name="partner_last_name"></td>
+      </tr>
+      <tr>
+        <td>Gender</td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </select>
+        </td>
+        <td>Date of Birth</td>
+        <td><input type="date" name="partner_date_of_birth"></td>
+      </tr>
+      <tr>
+        <td>Natinality</td>
+        <td><input type="text" name="partner_nationality"></td>
+        <td>UK Entry</td>
+        <td><input type="date" name="partner_date_of_uk_entry"></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Children</th>
+      </tr>
+      <tr>
+        <td>Children<br>(one per row)</td>
+        <td colspan='3'><textarea rows="5" name="children"> </textarea></td>
+      </tr>
+
+      <tr>
+        <th colspan='4'>Additional Notes</th>
+      </tr>
+      <tr>
+        <td>Notes</td>
+        <td colspan='3'><textarea rows="5" name="notes"> </textarea></td>
+      </tr>
+
+      <tr>
+        <td>Consultant</td>
+        <td>
+          <select>
+            <option value=""></option>
+            <option value="TG">Tatiana Gutu</option>
+            <option value="SO">Svetlana Onofrei</option>
+            <option value="SR">Sergii Romanov</option>
+          </select>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+  <input class="submit_button" type="submit" value="Create New Client">
+  <a style="margin-left:20px; font-size: 17px;" href="clients">Cancel</a>
+  </form>
+</div>
+
+
+</body>
+</html>
+{% endautoescape %}

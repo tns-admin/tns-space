@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% autoescape true %}
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
@@ -8,8 +7,8 @@
 
 <div id="sidebar">
 
-{% for item in data.sidebar.pages %}
-   {% if item.page == data.sidebar.current_page %} 
+{% for item in data.client_sidebar.pages %}
+   {% if item.page == data.client_sidebar.current_page %} 
     <b>{{ item.text }}</b><br>
    {% else %} 
     <a href={{ item.url }}>{{ item.text }}</a><br>
@@ -19,4 +18,3 @@
 
 </body>
 </html>
-{% endautoescape %}

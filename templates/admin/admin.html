@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+
+<body>
+
+  <div class="main-container">
+
+    {% include "/templates/header/header.html" %}
+
+    <!-- LEFT-CONTAINER -->
+    <div class="left-container container">
+      <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+        <h2 class="titular">ADMIN</h2>
+        <ul class="menu-box-menu">
+          <li>
+              <a class="menu-box-tab" href="/admin?page=users"><span class="icon entypo-users scnd-font-color"></span>Users</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <!-- MIDDLE-CONTAINER -->
+    <div class="middle-container container">
+      {% include data.body_template %}
+    </div>
+
+</div>
+
+</body>
+</html>
+{% endautoescape %}

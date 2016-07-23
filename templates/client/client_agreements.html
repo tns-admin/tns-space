@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+function edit_enable_all () {
+  $(".delete-col").show ();
+  $("#main-pen").hide ();
+  $("#main-cross").show ();
+}
+
+function edit_disable_all () {
+  $(".delete-col").hide ();
+  $("#main-cross").hide ();
+  $("#main-pen").show ();
+}
+
+function delete_attachment (id) {
+  alert ("Deleting agreement [" + id + "]");
+}
+
+$("document").ready(function(){
+  $("#uploadBtn").change(function() {
+    if (this.value) {
+      alert('Uploaded file [' + this.value + ']');
+    }
+  });
+});
+
+</script>
+</head>
+<body>
+
+<div id="content">
+
+  <table width=100%>
+  <tr>
+    <td>
+      <h1>Agreements
+        <a id="main-pen" href="javascript:edit_enable_all ()">
+          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        </a>
+        <a id="main-cross" href="javascript:edit_disable_all ()" style="display:none;">
+          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        </a>
+      </h1>
+    </td>
+    <td>
+      <div class="fileUpload btn btn-primary" style="float:right;">
+          <span>Upload</span>
+          <input id="uploadBtn" type="file" class="upload" />
+      </div>
+    </td>
+  </tr>
+  </table>
+  <table class="results-table" width=100%>
+    <tr>
+      <th style="width: 70%; text-align: center;">Document</th>
+      <th style="width: 20%; text-align: center;">Timestamp</th>
+      <th class="delete-col" style="text-align: center; display:none;">Delete</th>
+    </tr>
+    <tr>
+      <td style="text-align: left;"><a href="">Contract</a></td>
+      <td>17:03:02</td>
+      <td class="delete-col" style="display:none;">
+        <a href="javascript:delete_attachment (1)">
+          <span class="edit-icon entypo-trash scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;"><a href="">Authorisation copy HMRC</a></td>
+      <td>12 Dec 2016</td>
+      <td class="delete-col" style="display:none;">
+        <a href="javascript:delete_attachment (2)">
+          <span class="edit-icon entypo-trash scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;"><a href="">Internal Authorisation</a></td>
+      <td>1 Jun 2016</td>
+      <td class="delete-col" style="display:none;">
+        <a href="javascript:delete_attachment (3)">
+          <span class="edit-icon entypo-trash scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;"><a href="">Transfer of Soul Ownership</a></td>
+      <td>1 Jan 2017</td>
+      <td class="delete-col" style="display:none;">
+        <a href="javascript:delete_attachment (4)">
+          <span class="edit-icon entypo-trash scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>
+{% endautoescape %}
