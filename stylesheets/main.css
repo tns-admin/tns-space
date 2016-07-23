@@ -8,7 +8,12 @@ SOURCE: http://codepen.io/jlalovi/pen/bIyAr/
 
 /************************************ FONTS ************************************/
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
-@import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|zocial);
+
+@import url("/static/fonts/entypo/entypo.css");
+@import url("/static/fonts/fontawesome/fontawesome.css");
+@import url("/static/fonts/zocial/zocial-regular.css");
+
+
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
