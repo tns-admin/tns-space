@@ -1,8 +1,6 @@
 import os
 import MySQLdb
 
-from google.appengine.api import users as gusers
-
 import jinja2
 import webapp2
 

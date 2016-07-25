@@ -1,8 +1,7 @@
 import logging as log
 
-from google.appengine.api import users as gusers
-
-from pytns.utils.users import validate_current_user
+from pytns.utils import users
+from pytns.pages import header as header_page
 
 import clients_search
 import clients_create
@@ -30,7 +29,7 @@ class RequestHandler:
   def process_request (self, request):
     page = request.get('page', 'search')
     data = {
-      'user': gusers.get_current_user(),
+      'header': header_page.process_request (request),
       'body_template': "/templates/clients/clients_" + page + ".html",
       'sidebar': generate_sidebar_data (page)
     }

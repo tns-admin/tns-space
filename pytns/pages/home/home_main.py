@@ -1,11 +1,13 @@
 import logging as log
 
-from google.appengine.api import users as gusers
+from pytns.utils import users
+
+from pytns.pages import header as header_page
 
 import home_dashboard
 
 admin_pages = {
-  'dashboard':    {'text': "Dashboard", 'request_handler': home_dashboard.process_request},
+  'dashboard':    {'text': "Dashboard", 'request_handler': home_dashboard.process_request}
 }
 
 def generate_sidebar_data (current_page):
@@ -26,7 +28,7 @@ class RequestHandler:
   def process_request (self, request):
     page = request.get('page', 'dashboard')
     data = {
-      'user': gusers.get_current_user(),
+      'header': header_page.process_request (request),
       'body_template': "/templates/home/home_" + page + ".html",
       'sidebar': generate_sidebar_data (page)
     }

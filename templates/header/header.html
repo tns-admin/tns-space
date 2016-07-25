@@ -3,6 +3,28 @@
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function myFunction() {
+  document.getElementById("profile-dropdown").classList.toggle("show");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  let dropdowns = document.getElementsByClassName("dropdown-content");
+  for (let i = 0; i < dropdowns.length; i++) {
+    let openDropdown = dropdowns[i];
+    if (openDropdown.classList.contains('show')) {
+      openDropdown.classList.remove('show');
+    }
+  }
+}
+
+</script>
+
 </head>
 <body>
 
@@ -25,28 +47,22 @@
         <a class="header-menu-tab" href="admin"><span class="icon fontawesome-cogs scnd-font-color"></span>Admin</a>
       </li>
   </ul>
-  <div class="profile-menu">
-    <p>{{ data.user.nickname () }}<a href="#26"><span class="entypo-down-open scnd-font-color"></span></a></p>
-    <div class="profile-picture small-profile-picture">
-        <img width="40px" alt="Anne Hathaway picture" src="http://upload.wikimedia.org/wikipedia/commons/e/e1/Anne_Hathaway_Face.jpg">
-    </div>
-    </div>
-  </header>
 
-<!--div id="header">
-  <table>
-    <tr>
-      <td>
-        <a href="/"><img src="/static/icons/homepage.jpg" alt="T&amp;S Space" width="42" height="42"></a>
-        <a href="/clients"><img src="/static/icons/clients.png" alt="Clients" width="42" height="42"></a>
-        <a href="/?page=users"><img src="/static/icons/users.jpg" alt="Users" width="42" height="42"></a>
-      </td>
-      <td>
-        <p> {{ data.user.nickname () }} <a href="{{ logout_url|safe }}"> logout</a> </p>
-      </td>
-    </tr>
-  </table>
-</div-->
+  <div class="profile-menu">
+    <a id="qwert" href="javascript:myFunction()"> <p>{{ data.header.user.first_name () if data.header.user else "Noneserg" }}<span class="entypo-down-open scnd-font-color" style="margin-left:5px"></span></p> </a>
+
+    <div class="profile-picture small-profile-picture">
+        <img width="40px" alt="Anne Hathaway picture" src="static/icons/user.png">
+    </div>
+
+    <div id="profile-dropdown" class="dropdown-content">
+      <a href="#">My Profile</a>
+      <hr/>
+      <a href="{{ data.header.logout_url }}">Logout</a>
+    </div>
+
+  </div>
+  </header>
 
 </body>
 </html>

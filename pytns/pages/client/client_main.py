@@ -4,9 +4,8 @@ import jinja2
 import webapp2
 import logging as log
 
-from google.appengine.api import users as gusers
-
-from pytns.utils.users import validate_current_user
+from pytns.utils import users
+from pytns.pages import header as header_page
 
 import client_general
 import client_personal
@@ -39,7 +38,7 @@ class RequestHandler:
     page = request.get('page', 'general')
 
     data = {
-      'user': gusers.get_current_user(),
+      'header': header_page.process_request (request),
       'client_id': client_id,
       'body_template': "/templates/client/client_" + page + ".html",
       'sidebar': generate_sidebar_data (page)
@@ -50,30 +49,3 @@ class RequestHandler:
     data [page] = (client_pages [page] ['request_handler']) (request)
 
     return {"template": "client/client.html", "data": data}
-
-'''
-class RequestHandler(webapp2.RequestHandler):
-
-    def get(self):
-        validate_current_user (self)
-        client_id = self.request.get('id')
-        page = self.request.get('page')
-
-        data = {
-            'user': gusers.get_current_user(),
-            'client_id': client_id,
-            'page': page,
-            'sidebar': client_sidebar.process_request (self.request)
-        }
-
-        if page == "general":
-            data ["general"] = client_general.process_request (self.request)
-        if page == "personal":
-
-            data ["personal"] = client_personal.process_request (self.request)
-        if page == "agreements":
-            data ["agreements"] = client_agreements.process_request (self.request)
-
-        template = JINJA_ENVIRONMENT.get_template('templates/client.html')
-        self.response.write(template.render({'data': data}))
-'''

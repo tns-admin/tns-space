@@ -42,4 +42,7 @@ class User:
   def role (self):
     return self._role
 
+  def is_active (self):
+    return self._status == USER_STATUS_ACTIVE
+
 

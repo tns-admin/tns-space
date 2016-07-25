@@ -4,11 +4,10 @@ import jinja2
 import webapp2
 import json
 
-from pytns.utils.users import validate_current_user
+from pytns.google_utils import users as google_users
+from pytns.utils import users
 
-from google.appengine.api import users as gusers
-from google.appengine.ext import ndb
-
+import logging as log
 
 def get_root_path ():
     file_path = os.path.dirname(__file__)
@@ -25,7 +24,11 @@ class RequestHandler(webapp2.RequestHandler):
 
     def __init__ (self, arg1, arg2):
         super (RequestHandler, self).__init__(arg1, arg2)
-        validate_current_user (self)
+        # validate user
+        user = users.get_current_user ()
+        if not user or not user.is_active ():
+            self.redirect(google_users.create_logout_url())
+
 
     def render_response (self, response):
         template_path = "/templates/" + response ['template'];

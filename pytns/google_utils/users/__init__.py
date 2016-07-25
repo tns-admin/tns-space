@@ -1,3 +1,5 @@
+from google.appengine.api import users as gusers
+
 
 GOOGLE_USERS = {
   "admin@tnstax.co.uk": {"email":"admin@tnstax.co.uk", "first_name": "Admin", "last_name": "Super"},
@@ -19,3 +21,15 @@ def get_user_details (email):
     return GOOGLE_USERS [email]
   else:
     raise Exception ("Failed to retrieve google user [" + email + "]!")
+
+def get_current_user_email ():
+  user = gusers.get_current_user()
+  if not user or not user.email ():
+    return None
+  return user.email ()
+
+def create_login_url (uri):
+  return gusers.create_login_url(uri)
+
+def create_logout_url ():
+  return gusers.create_logout_url('/')
