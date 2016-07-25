@@ -1,4 +1,4 @@
-from pytns import webenv
+from tnspy import webenv
 import admin_main
 
 class RequestHandler(webenv.RequestHandler):

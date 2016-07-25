@@ -1,4 +1,4 @@
-from pytns import webenv
+from tnspy import webenv
 import ajax_main
 
 class RequestHandler(webenv.RequestHandler):

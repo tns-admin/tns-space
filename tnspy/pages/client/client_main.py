@@ -4,8 +4,8 @@ import jinja2
 import webapp2
 import logging as log
 
-from pytns.utils import users
-from pytns.pages import header as header_page
+from tnspy.utils import users
+from tnspy.pages import header as header_page
 
 import client_general
 import client_personal

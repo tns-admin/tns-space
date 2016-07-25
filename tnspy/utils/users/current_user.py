@@ -1,4 +1,4 @@
-from pytns.google_utils import users as google_users
+from tnspy.google_utils import users as google_users
 from database import Database as users_db
 
 def get_current_user ():

@@ -1,7 +1,7 @@
 import webapp2
 
-from pytns import pages
-from pytns import ajax
+from tnspy import pages
+from tnspy import ajax
 
 app = webapp2.WSGIApplication([
     ('/', pages.home.RequestHandler),

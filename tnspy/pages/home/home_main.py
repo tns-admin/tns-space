@@ -1,8 +1,8 @@
 import logging as log
 
-from pytns.utils import users
+from tnspy.utils import users
 
-from pytns.pages import header as header_page
+from tnspy.pages import header as header_page
 
 import home_dashboard
 

@@ -1,7 +1,7 @@
-from pytns import webenv
+from tnspy import webenv
 import home_main
 
-from pytns.google_utils import users as google_users
+from tnspy.google_utils import users as google_users
 
 class RequestHandler(webenv.RequestHandler):
   def get (self):

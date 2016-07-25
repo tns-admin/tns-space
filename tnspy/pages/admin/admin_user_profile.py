@@ -1,4 +1,4 @@
-from pytns.utils import users
+from tnspy.utils import users
 
 def process_request (request):
   users_db = users.Database ()

@@ -1,5 +1,5 @@
-from pytns.utils import users
-import pytns.google_utils.users as google_users
+from tnspy.utils import users
+import tnspy.google_utils.users as google_users
 
 def add_user_validate (request):
   email = request.get ("email")

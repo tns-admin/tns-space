@@ -1,5 +1,5 @@
-from pytns.utils import users
-from pytns.google_utils import users as google_users
+from tnspy.utils import users
+from tnspy.google_utils import users as google_users
 
 def process_request (request):
   response = {

@@ -1,7 +1,7 @@
 import logging as log
 
-from pytns.utils import users
-from pytns.pages import header as header_page
+from tnspy.utils import users
+from tnspy.pages import header as header_page
 
 import admin_users
 import admin_add_user

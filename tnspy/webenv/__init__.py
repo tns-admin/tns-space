@@ -4,8 +4,8 @@ import jinja2
 import webapp2
 import json
 
-from pytns.google_utils import users as google_users
-from pytns.utils import users
+from tnspy.google_utils import users as google_users
+from tnspy.utils import users
 
 import logging as log
 
