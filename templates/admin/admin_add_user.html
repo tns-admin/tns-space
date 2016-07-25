@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function validate_username ()
+{
+  $("#add-user-failed").hide ();
+  $("#invalid-user").hide ();
+  $("#user-form").hide ();
+
+  let username = document.getElementById("username").value;
+  let email = username + "@tnstax.co.uk";
+  $.ajax (
+  {
+    type: "GET", // POST or GET
+    url: "ajax",
+    dataType: "json",
+    data: {
+      request_id: "users.add_user_validate",
+      email: email
+    }
+  }
+  ).done ( function (response)
+    {
+      if (response.status == 0)
+      {
+        $("#user-full-name").replaceWith ("<div id='user-full-name'>" + response.message + "</div>")
+        $("#user-form").show ();
+        document.getElementById("user_email").value = email
+      } else {
+        $("#invalid-user").show ();
+        let error_html = "Error: " + response.message;
+        $("#validate-error-msg").replaceWith ("<div id='validate-error-msg'> Error: " + response.message + "</div>");
+      }
+    }
+  )
+}
+
+function add_user ()
+{
+  $("#add-user-failed").hide ();
+
+  let email = document.getElementById("user_email").value;
+  let role = document.getElementById("user_role").value;
+
+  $.ajax (
+  {
+    type: "POST", // POST or GET
+    url: "ajax",
+    dataType: "json",
+    data: {
+      request_id: "users.add_user",
+      email: email,
+      role: role
+    }
+  }
+  ).done ( function (response)
+    {
+      if (response.status == 0)
+      {
+        window.location = "/admin?page=users";
+      } else {
+        $("#add-user-failed").show ();
+        $("#add-user-failed-msg").replaceWith ("<div id='add-user-failed-msg'> Error: " + response.message + "</div>");
+      }
+    }
+  )
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Add Google User</h1>
+
+<div>
+  <input type="text" id="username">@tnstax.co.uk
+  <button onclick="validate_username()" class="fileUpload btn btn-primary">Validate</button>
+
+  <div id='invalid-user' style="display:none;">
+    <p style="margin-left:10px"> <div id="validate-error-msg">Error msg</div></p>
+  </div>
+
+  <div id='user-form' style="display:none;">
+    <input type="hidden" id="user_email">
+    <table class="form-table">
+      <tr>
+        <td style="width: 25%">Name</td>
+        <td style="padding-left:10px; width: 75%">
+          <div id="user-full-name"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>Role</td>
+        <td> 
+          <select id="user_role">
+            <option value=2>User</option>
+            <option value=1>Admin</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <button onclick="add_user()" class="submit_button">Add User</button>
+
+    <a style="margin-left:20px; font-size: 17px;" href="admin?page=users">Cancel</a>
+    <br>
+
+    <div id='add-user-failed' style="display:none;">
+      <div id="add-user-failed-msg">Error msg</div>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
+{% endautoescape %}

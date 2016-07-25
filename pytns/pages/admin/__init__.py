@@ -1,4 +1,4 @@
-import webenv
+from pytns import webenv
 import admin_main
 
 class RequestHandler(webenv.RequestHandler):

@@ -6,7 +6,7 @@ import logging as log
 
 from google.appengine.api import users as gusers
 
-from utils.users import validate_current_user
+from pytns.utils.users import validate_current_user
 
 import client_general
 import client_personal

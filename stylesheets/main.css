@@ -26,39 +26,6 @@ SOURCE: http://codepen.io/jlalovi/pen/bIyAr/
 [class*="zocial-"]:before {
   font-family: 'zocial', sans-serif;
 }
-@font-face {
-  font-family: 'icomoon';
-  src:url('http://jlalovi-cv.herokuapp.com/font/icomoon.eot');
-  src:url('http://jlalovi-cv.herokuapp.com/font/icomoon.eot?#iefix') format('embedded-opentype'),
-    url('http://jlalovi-cv.herokuapp.com/font/icomoon.ttf') format('truetype'),
-    url('http://jlalovi-cv.herokuapp.com/font/icomoon.woff') format('woff'),
-    url('http://jlalovi-cv.herokuapp.com/font/icomoon.svg#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-  font-family: 'icomoon';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-cloudy:before {
-  content: "\e60f";
-}
-.icon-sun:before {
-  content: "\e610";
-}
-.icon-cloudy2:before {
-  content: "\e611";
-}
 /************************************* END FONTS *************************************/
 
 * {
@@ -276,6 +243,14 @@ textarea {
     border-radius: 3px;
 }
 
+select {
+  background: #50597b;
+}
+
+select:disabled {
+  background: #1e222e;
+}
+
 .horizontal-list {
   margin: 0;
   padding: 0;
@@ -296,11 +271,6 @@ textarea {
 .edit-icon {
   margin-left: 5px;
   font-size: 17px;
-}
-
-
-.edit-pen {
-  display:none;
 }
 
 .titular {

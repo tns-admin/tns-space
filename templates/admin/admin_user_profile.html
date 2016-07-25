@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/scripts/edit_page.js"></script>
+
+<script type="text/javascript">
+
+function edit_save (field_name) {
+  if (edit_field_changed(field_name)) {
+    edit_save_finish (field_name, true);
+    return;
+  }
+
+  $.ajax (
+    {
+      type: "POST", // POST or GET
+      url: "ajax",
+      dataType: "json",
+      data: {
+        request_id: "users.update_user_field",
+        user_id: {{ data.user_profile.user.id () }},
+        field: field_name,
+        value: document.getElementById(field_name).value
+      }
+    }
+  ).done ( function (response)
+    {
+      if (response.status == 0) {
+        // all good
+        edit_save_finish (field_name, true);
+      } else {
+        // error
+        edit_save_finish (field_name, false);
+      }
+    }
+  )
+
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="content">
+  <h1>User Profile
+    <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
+      <span class="edit-icon entypo-pencil scnd-font-color"></span>
+    </a>
+    <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
+      <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+    </a>
+  </h1>
+
+  <table class="form-table">
+    <tr>
+      <td style="width: 20%">Name</td>
+      <td>{{data.user_profile.user.full_name ()}}</td>
+    </tr>
+
+    <tr>
+      <td>Email</td>
+      <td>{{data.user_profile.user.email ()}}</td>
+    </tr>
+
+    <tr>
+      <td>Role</td>
+      <td>
+        <select id="role" disabled>
+          {% for item in data.user_profile.role_map %}
+            {% if item > 0 %}
+              <option value={{item}} {% if item == data.user_profile.user.role () %} selected {% endif %}>{{ data.user_profile.role_map [item] }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        <a class="edit-field-enable-btn" id="role-edit-btn" href="javascript:edit_enable ('role')" style="display:none;">
+          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        </a>
+        <a class="edit-field-save-btn" id ="role-save-btn" href="javascript:edit_save ('role')" style="display:none;">
+          <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+        </a>
+        <a class="edit-field-cancel-btn" id="role-cancel-btn" href="javascript:edit_cancel ('role')" style="display:none;">
+          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Status</td>
+      <td>
+        <select id="status" disabled>
+          {% for item in data.user_profile.status_map %}
+            {% if item > 0 %}
+              <option value={{item}} {% if item == data.user_profile.user.status () %} selected {% endif %}>{{ data.user_profile.status_map [item] }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+        <a class="edit-field-enable-btn" id="status-edit-btn" href="javascript:edit_enable ('status')" style="display:none;">
+          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        </a>
+        <a class="edit-field-save-btn" id ="status-save-btn" href="javascript:edit_save ('status')" style="display:none;">
+          <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+        </a>
+        <a class="edit-field-cancel-btn" id="status-cancel-btn" href="javascript:edit_cancel ('status')" style="display:none;">
+          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        </a>
+      </td>
+    </tr>
+
+  </table>
+
+</div>
+</body>
+</html>
+{% endautoescape %}
