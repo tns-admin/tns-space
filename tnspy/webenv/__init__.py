@@ -1,11 +1,10 @@
 import os
-import urllib
 import jinja2
 import webapp2
 import json
 
 from tnspy.google_utils import users as google_users
-from tnspy.utils import users
+#from tnspy.utils import users as tns_users
 
 import logging as log
 
@@ -25,9 +24,9 @@ class RequestHandler(webapp2.RequestHandler):
     def __init__ (self, arg1, arg2):
         super (RequestHandler, self).__init__(arg1, arg2)
         # validate user
-        user = users.get_current_user ()
-        if not user or not user.is_active ():
-            self.redirect(google_users.create_logout_url())
+#        user = tns_users.get_current_user ()
+#        if not user or not user.is_active ():
+#            self.redirect(google_users.create_logout_url())
 
 
     def render_response (self, response):
