@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/scripts/edit_page.js"></script>
+
+<script type="text/javascript">
+
+function toggle_tasks ()
+{
+  $("#tasks-div").toggle ("show");
+  $("#tasks-down-arrow").toggle ("show");
+  $("#tasks-up-arrow").toggle ("show");
+}
+
+function toggle_attachments ()
+{
+  $("#attachments-div").toggle ("show");
+  $("#attachments-down-arrow").toggle ("show");
+  $("#attachments-up-arrow").toggle ("show");
+}
+
+function toggle_add_note ()
+{
+    $("#add-note").toggle ("show");
+    $("#down-arrow").toggle ("show");
+    $("#up-arrow").toggle ("show");
+
+    document.getElementById ("custom").value = $("#custom-search").is (":visible");
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="content">
+  <table class="form-table">
+    <tr>
+      <td style="width=80%">
+        <h1>Self Assessment 2015
+          <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
+            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+          </a>
+          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
+            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+          </a>
+        </h1>
+      </td>
+      <td style="text-align:right;"><h1> Pasha Tushkanchik </h1></td>
+    </tr>
+
+    <tr>
+      <td>
+        <textarea rows="5" name="description">Prepare self assessment for 2015</textarea>
+      </td>
+      <td>
+        <table>
+          <tr>
+            <td>Owner</td>
+            <td>Tatiana Gutu</td>
+          </tr>
+          <tr>
+            <td>Status</td>
+            <td>In Progress</td>
+          </tr>
+          <tr>
+            <td>Due Date</td>
+            <td>12 Dec 2016</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <div>
+      <a href="javascript:toggle_tasks ()">Tasks</a>
+      <span id="tasks-down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px; display:none"></span>
+      <span id="tasks-up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px"></span>
+  </div>
+
+
+  <div id="tasks-div">
+    <table class = "results-table" width=720px>
+      <tr>
+        <th>Title</th>
+        <th>Owner</th>
+        <th>Due Date</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Call HMRC tax code</td>
+        <td>Svetlana Onofrei</td>
+        <td>21 Jan 2016</td>
+        <td>Completed</td>
+      </tr>
+      <tr>
+        <td>Create Invoice</td>
+        <td>Svetlana Onofrei</td>
+        <td>14 Jan 2016</td>
+        <td>Completed</td>
+      </tr>
+      <tr>
+        <td>Catch all pokemons in Westgate House</td>
+        <td>Svetlana Onofrei</td>
+        <td>25 Jan 2016</td>
+        <td>In progress</td>
+      </tr>
+      <tr>
+        <td>Do nothing</td>
+        <td>Sergii Romanov</td>
+        <td>31 Jan 2020</td>
+        <td>In Progress</td>
+      </tr>
+      <tr>
+        <td> <a href="#">View all 4 task(s)</a></td>
+        <td colspan=3></td>
+      <tr>
+    </table>
+  </div>
+
+  <div>
+      <a href="javascript:toggle_attachments ()">Attachments</a>
+      <span id="attachments-down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px;"></span>
+      <span id="attachments-up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+  </div>
+
+
+  <div id="attachments-div" style="display:none">
+    <table class = "results-table" width=720px>
+      <tr>
+        <th>Title</th>
+        <th>Who uploaded</th>
+        <th>Timestamp</th>
+      </tr>
+      <tr>
+        <td>Contract</td>
+        <td>Svetlana Onofrei</td>
+        <td>21 Jan 2016</td>
+      </tr>
+      <tr>
+        <td>Authorisation copy HMRC</td>
+        <td>Svetlana Onofrei</td>
+        <td>14 Jan 2016</td>
+      </tr>
+      <tr>
+        <td>Internam authorisation</td>
+        <td>Tatiana Gutu</td>
+        <td>25 Jan 2016</td>
+      </tr>
+      <tr>
+        <td>Transfer of Soul Ownership</td>
+        <td>Svetlana Onofrei</td>
+        <td>31 Jan 2010</td>
+      </tr>
+      <tr>
+        <td> <a href="#">View all 14 attachment(s)</a></td>
+        <td colspan=3></td>
+      <tr>
+    </table>
+  </div>
+
+  <div>
+    <a href="javascript:toggle_add_note ()">Add note</a>
+    <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
+    <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+  </div>
+
+  <div id="add-note" style="display:none">
+    <textarea style="margin-top:20px; width: 100%; height: 100px" type="text"></textarea>
+    <button type="button" class="submit_button" style="float:right;">Add note</button>
+  </div>
+
+  <div style= "width: 100%; height: 400px; overflow-y: scroll; border-style: ridge; border-width: 2px; margin-top:10px">
+      <b>18/01/2016  Svetlana Onofrei</b><br/>
+      Project specific notes should go to the corresponding project. Same for tasks. Only general client notes should be here.<br/><hr/>
+
+      <b>18/01/2016 Sergii Romanov</b><br/>
+      This client needs WTC and Child Benefits. Maybe Annual Tax return.<br/><hr/>
+
+      <b>18/01/2016 Sergii Romanov</b><br/>
+      Notes cannot be edited. All corrections must come as followup notes
+<br/><hr/>
+
+      <b>18/01/2016 Tatiana Gutu</b><br/>
+      Maybe add notes here.<br/><hr/>
+  </div>
+
+</div>
+
+</body>
+</html>
+{% endautoescape %}
