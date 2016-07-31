@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+
+<script type="text/javascript">
+
+function toggle_custom_search ()
+{
+    $("#custom-search").toggle ("show");
+    $("#down-arrow").toggle ("show");
+    $("#up-arrow").toggle ("show");
+
+    document.getElementById ("custom").value = $("#custom-search").is (":visible");
+}
+
+function on_page_load ()
+{
+    url_params = window.location.search;
+    if (url_params.indexOf ("custom=true") != -1) {
+        toggle_custom_search ()
+    }
+}
+
+window.onload = on_page_load;
+
+</script>
+
+{% set status_colors = { "Completed": "#00FF00", "Suspended": "#FFFF00", "Canceled": "#FF0000"} %}
+
+</head>
+
+
+<body>
+  <div>
+      <a href="javascript:toggle_custom_search ()">Custom search</a>
+      <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
+      <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+  </div>
+
+  <div id="custom-search" style="display:none">
+
+    <form>
+      <input type="hidden" name="page" value="search">
+      <input type="hidden" id="custom" name="custom" value="0">
+      <table class="form-table">
+        <tr>
+          <td width="150px">
+            Code
+          </td>
+          <td width="120px">
+            <select name="code">
+              <option value="" selected></option>
+                {% for code in data.page.project_codes %}
+                  <option value={{ code.id () }}>{{ code.abbr () }} - {{ code.title () }}</option>
+                {% endfor %}
+            </select>
+          <td>
+          <td>
+            Status
+          </td>
+          <td>
+            <select name="code">
+              <option value="" selected></option>
+                <option value=1>Complete</option>
+                <option value=2>In Progress</option>
+                <option value=3>Overdue</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Owner
+          </td>
+          <td>
+            <select name="consultant">
+              <option value="" selected></option>
+                {% for user_id, user_name in data.page.users.iteritems () %}
+                  <option value={{ user_id }}>{{ user_name }}</option>
+                {% endfor %}
+            </select>
+          <td>
+          <td></td>
+          <td>
+            <input class="submit_button" type="submit" value="Search">
+          </td>
+        </tr>
+      </table>
+    </form>
+
+  </div>
+
+  <div>
+  <table class = "results-table" width=720px>
+      <tr>
+          <th>Code</th>
+          <th>Title</th>
+          <th>Client</th>
+          <th>Owner</th>
+          <th>Status</th>
+          <th>Due Date</th>
+      </tr>
+      {% for proj in data.page.projects %}
+          <tr>
+              <td> {{ proj.code }}</td>
+              <td> <a href="project?id={{ proj.id }}"> {{ proj.title }}</a></td>
+              <td>{{ proj.client }}</td>
+              <td>{{ data.page.users[proj.owner] }}</td>
+              <td>
+                  <span style="color:{{status_colors[proj.status]}}";>{{ proj.status }}</span>
+              </td>
+              <td>{{ proj.due_date }}</td>
+          </tr>
+      {% endfor %}
+  </table>
+  </div>
+</body>
+</html>
+{% endautoescape %}

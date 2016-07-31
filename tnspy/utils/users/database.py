@@ -6,12 +6,12 @@ from tnspy.utils import tnsdb
 import logging as log
 
 def _user_from_data (user_data):
-  return User (id         = user_data [0],
-               email      = user_data [1],
-               first_name = user_data [2],
-               last_name  = user_data [3],
-               role       = user_data [4],
-               status     = user_data [5],
+  return User (id         = user_data ['id'],
+               email      = user_data ['email'],
+               first_name = user_data ['first_name'],
+               last_name  = user_data ['last_name'],
+               role       = user_data ['role'],
+               status     = user_data ['status'],
                picture    = None)
 
 

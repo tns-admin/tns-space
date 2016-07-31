@@ -7,4 +7,5 @@ def connect ():
                          db='tns_space',
                          user='space',
                          charset='utf8',
-                         passwd='adVen4e!')
+                         passwd='adVen4e!',
+                         cursorclass=MySQLdb.cursors.DictCursor)
