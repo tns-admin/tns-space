@@ -3,26 +3,61 @@
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+
+
+<script type="text/javascript">
+
+function toggle_custom_search ()
+{
+    $("#custom-search").toggle ("show");
+    $("#down-arrow").toggle ("show");
+    $("#up-arrow").toggle ("show");
+
+    document.getElementById ("custom").value = $("#custom-search").is (":visible");
+}
+
+function on_page_load ()
+{
+    url_params = window.location.search;
+    if (url_params.indexOf ("custom=true") != -1) {
+        toggle_custom_search ()
+    }
+}
+
+window.onload = on_page_load;
+
+</script>
+
+{% set status_colors = [ "#00FF00", "#FFFF00", "#FF0000"] %}
+
 </head>
+
+
 <body>
-
-<h1>Search Existing Clients</h1>
-
 <div>
+    <a href="javascript:toggle_custom_search ()">Custom search</a>
+    <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
+    <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+</div>
+
+<div id="custom-search" style="display:none">
+
   <form>
+    <input type="hidden" name="page" value="search">
+    <input type="hidden" id="custom" name="custom" value="0">
     <table class="form-table">
       <tr>
         <td width="150px">
           Name
         </td>
         <td width="120px">
-          <input type="text" name="name">
+          <input type="text" id="name" name="name" value="{{ data.search.request.name }}">
         <td>
         <td>
           Reference
         </td>
         <td>
-          <input type="text" name="reference">
+          <input type="text" name="ref" value="{{ data.search.request.ref }}">
         </td>
       </tr>
       <tr>
@@ -30,10 +65,11 @@
           Consultant
         </td>
         <td>
-          <select>
+          <select name="cons">
             <option value=""></option>
-            <option value="TG">Tatiana Gutu</option>
-            <option value="MC">Marina Cotiuc</option>
+            {% for id, cons in data.search.consultants.iteritems () %}
+              <option value={{id}} {% if id == data.search.request.cons %} selected {% endif %}>{{ cons.name }}</option>
+            {% endfor %}
           </select>
         <td>
         <td></td>
@@ -44,61 +80,30 @@
     </table>
   </form>
 
+</div>
+
+<div>
+
 <table class = "results-table" width=720px>
     <tr>
-        <th>ID</th>
+        <th>Reference</th>
         <th>Name</th>
         <th>Consultant</th>
         <th>Projects</th>
-        <th>Projects Status</th>
-        <th>Payment Status</th>
-        <th>File</th>
     </tr>
-    <tr>
-        <td>0001</td>
-        <td> <a href="client">Vasia Pupkin</a></td>
-        <td>TG</td>
-        <td>SA CHB</td>
-        <td>Complet</td>
-        <td>Paid</td>
-        <td>link</td>
-    </tr>
-    <tr>
-        <td>0002</td>
-        <td><a href="client">Victoria Scotch</a></td>
-        <td>MC</td>
-        <td>WTC MAT SA</td>
-        <td>In Progress</td>
-        <td>Need Payment</td>
-        <td>link</td>
-    </tr>
-    <tr>
-        <td>0003</td>
-        <td><a href="client">Ivan Susanin</a></td>
-        <td>TG</td>
-        <td>TCC NINO</td>
-        <td>Due in 2 days</td>
-        <td>Not Paid</td>
-        <td>link</td>
-    </tr>
-    <tr>
-        <td>0004</td>
-        <td><a href="client">Peter Pen</a></td>
-        <td>MC</td>
-        <td>OTR OTR</td>
-        <td>Overdue</td>
-        <td>Paid</td>
-        <td>link</td>
-    </tr>
-    <tr>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-    </tr>
+    {% for client in data.search.clients %}
+        <tr>
+            <td> <a href="client?id={{ client.id }}"> {{ client.ref }}</a></td>
+            <td> <a href="client?id={{ client.id }}"> {{ client.name }}</a></td>
+            <td>{{ data.search.consultants [client.consultant].initials }}</td>
+            <td>
+            {% for project in client.projects %}
+                <a href="#"> <span style="color:{{status_colors[project.status]}}";>{{ project.abbr }}</span> </a>
+            {% endfor %}
+            
+            </td>
+        </tr>
+    {% endfor %}
 </table>
 
   </div>

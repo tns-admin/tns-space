@@ -1,7 +1,7 @@
 import os
 import MySQLdb
 from user import User
-from tnspy.webenv import mysqldb as tnsdb
+from tnspy.utils import tnsdb
 
 import logging as log
 

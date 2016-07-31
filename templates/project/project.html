@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% autoescape true %}
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+</head>
+<body>
+
+<div class="main-container">
+  {% include "/templates/header/header.html" %}
+
+  <!-- LEFT-CONTAINER -->
+    <div class="left-container container">
+      <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
+        <h2 class="titular">PROJECT</h2>
+        <ul class="menu-box-menu">
+          <li>
+              <a class="menu-box-tab" href="/project?page=home"><span class="icon fontawesome-list-alt scnd-font-color"></span>Home</a>
+          </li>
+          <li>
+              <a class="menu-box-tab" href="/project?page=attachments"><span class="icon entypo-attach scnd-font-color"></span>Attachments</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MIDDLE-CONTAINER -->
+    <div class="middle-container container">
+      {% include data.body_template %}
+    </div>
+
+</div>
+
+
+</body>
+</html>
+{% endautoescape %}

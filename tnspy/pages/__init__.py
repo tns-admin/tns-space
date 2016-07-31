@@ -2,4 +2,8 @@ import header
 import home
 import clients
 import client
+import projects
+import project
+import tasks
+import task
 import admin

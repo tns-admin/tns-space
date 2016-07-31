@@ -10,11 +10,13 @@ from tnspy.pages import header as header_page
 import client_general
 import client_personal
 import client_agreements
+import client_projects
 
 client_pages = {
   'general':    {'text': "General", 'request_handler': client_general.process_request},
   'personal':   {'text': "Personal", 'request_handler': client_personal.process_request},
-  'agreements': {'text': "Agreements", 'request_handler': client_agreements.process_request}
+  'agreements': {'text': "Agreements", 'request_handler': client_agreements.process_request},
+  'projects': {'text': "Projects", 'request_handler': client_projects.process_request}
 }
 
 def generate_sidebar_data (current_page):
