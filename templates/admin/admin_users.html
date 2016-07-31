@@ -8,14 +8,14 @@
 
 <div id="content">
 
-  <table width=100%>
+  <table class="markup-table">
   <tr>
     <td>
-      <h2>T&amp;S Space Users</h2>
+      <h1>T&amp;S Space Users</h1>
     </td>
     <td>
-      <div class="fileUpload btn btn-primary" style="float:right;">
-          <a href="admin?page=add_user">Add User</a>
+      <div class="submit-button" style="float:right;">
+        <a href="admin?page=add_user">Add User</a>
       </div>
     </td>
   </tr>
@@ -30,13 +30,13 @@
       <th>Status</th>
     </tr>
     {% for item in data.users.all_users %}
-        <tr>
+      <tr>
         <td>{{ item.id }}</td>
         <td><a href="admin?page=user_profile&id={{ item.id }}">{{ item.name }}</a></td>
         <td>{{ item.email }}</td>
         <td>{{ item.role }}</td>
         <td>{{ item.status }}</td>
-        </tr>
+      </tr>
     {% endfor %}
   </table>
 

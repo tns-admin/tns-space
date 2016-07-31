@@ -12,15 +12,15 @@
     {% include "/templates/header/header.html" %}
 
     <!-- LEFT-CONTAINER -->
-    <div class="left-container container">
+    <div class="left-container">
       <div class="menu-box block"> <!-- MENU BOX (LEFT-CONTAINER) -->
         <h2 class="titular">TASKS</h2>
         <ul class="menu-box-menu">
           <li>
-              <a class="menu-box-tab" href="/tasks?page=search"><span class="icon entypo-search scnd-font-color"></span>Search</a>
+              <a class="menu-box-tab" href="/tasks?page=search"><span class="icon entypo-search icon-color"></span>Search</a>
           </li>
           <li>
-              <a class="menu-box-tab" href="/tasks?page=create"><span class="icon fontawesome-file scnd-font-color"></span>Create New Task</a>
+              <a class="menu-box-tab" href="/tasks?page=create"><span class="icon fontawesome-file icon-color"></span>Create New Task</a>
           </li>
         </ul>
       </div>
@@ -28,7 +28,7 @@
 
 
     <!-- MIDDLE-CONTAINER -->
-    <div class="middle-container container">
+    <div class="middle-container">
       {% include data.body_template %}
     </div>
 

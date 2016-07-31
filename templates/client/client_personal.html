@@ -2,10 +2,10 @@
 {% autoescape true %}
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/scripts/edit_page.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/edit_page.js"></script>
 
 <script type="text/javascript">
 
@@ -13,30 +13,20 @@ function edit_save (field_name) {
   edit_save_finish (field_name, true);
 }
 
-function toggle_add_note ()
-{
-    $("#add-note").toggle ("show");
-    $("#down-arrow").toggle ("show");
-    $("#up-arrow").toggle ("show");
-
-    document.getElementById ("custom").value = $("#custom-search").is (":visible");
-}
-
 </script>
 
 </head>
 <body>
 
-<div id="content">
-<table class="form-table">
+  <table class="markup-table">
     <tr>
       <td>
         <h1>Personal Info
           <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
-            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+            <span class="edit-icon entypo-pencil icon-color"></span>
           </a>
-          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
-            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" hidden>
+            <span class="edit-icon fontawesome-remove icon-color"></span>
           </a>
         </h1>
       </td>
@@ -51,18 +41,18 @@ function toggle_add_note ()
         <!-- View mode -->
         <div id="first_name_view">Ivan
           <a class="edit-pen" href="javascript:edit_enable ('first_name')">
-            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+            <span class="edit-icon entypo-pencil icon-color"></span>
           </a>
         </div>
 
         <!-- Edit mode -->
-        <div id="first_name_edit" style="display:none;">
+        <div id="first_name_edit" hidden>
           <input type="text" name="first_name" value="Ivan" style="margin-left:0px">
           <a href="javascript:edit_save ('first_name')">
-            <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+            <span class="edit-icon fontawesome-ok icon-color"></span>
           </a>
           <a href="javascript:edit_cancel ('first_name')">
-            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+            <span class="edit-icon fontawesome-remove icon-color"></span>
           </a>
         </div>
       </td>
@@ -70,7 +60,7 @@ function toggle_add_note ()
     <tr>
       <td>Middle Name(s)</td><td>Petrovich
         <a class="edit-pen" href="javascript:edit_enable ('middle_name')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -78,7 +68,7 @@ function toggle_add_note ()
       <td>Last Name</td>
       <td>Susanin
         <a class="edit-pen" href="javascript:edit_enable ('last_name')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -86,7 +76,7 @@ function toggle_add_note ()
       <td>Gender</td>
       <td>Male
         <a class="edit-pen" href="javascript:edit_enable ('gender')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -94,7 +84,7 @@ function toggle_add_note ()
       <td>Nationality</td>
       <td>British
         <a class="edit-pen" href="javascript:edit_enable ('nationality')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -102,7 +92,7 @@ function toggle_add_note ()
       <td>Date of Birth</td>
       <td>23/05/1788
         <a class="edit-pen" href="javascript:edit_enable ('date_of_birth')">
-            <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+            <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -111,7 +101,7 @@ function toggle_add_note ()
       <td>Address</td>
       <td>25 James Street<br>London<br>WD5 2PT
         <a class="edit-pen" href="javascript:edit_enable ('address')">
-            <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+            <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -119,7 +109,7 @@ function toggle_add_note ()
       <td>Telephone</td>
       <td>07482957284
         <a class="edit-pen" href="javascript:edit_enable ('telephone')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -127,7 +117,7 @@ function toggle_add_note ()
       <td>Email</td>
       <td>ivan.susanin@gmail.com
         <a class="edit-pen" href="javascript:edit_enable ('email')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -135,7 +125,7 @@ function toggle_add_note ()
       <td>UK Entry Date</td>
       <td>01/01/1900
         <a class="edit-pen" href="javascript:edit_enable ('uk_entry_date')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -143,7 +133,7 @@ function toggle_add_note ()
       <td>Occupation</td>
       <td>Tourism
         <a class="edit-pen" href="javascript:edit_enable ('occupation')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -151,7 +141,7 @@ function toggle_add_note ()
       <td>Work Start Date</td>
       <td>03/04/1912
         <a class="edit-pen" href="javascript:edit_enable ('work_start_date')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -161,7 +151,7 @@ function toggle_add_note ()
       <td>Marital Status</td>
       <td>Single
         <a class="edit-pen" href="javascript:edit_enable ('marital_status')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
@@ -169,15 +159,13 @@ function toggle_add_note ()
       <td>Marriage Date</td>
       <td>03/04/1912
         <a class="edit-pen" href="javascript:edit_enable ('marriage_date')">
-          <span class="edit-icon entypo-pencil scnd-font-color" ></span>
+          <span class="edit-icon entypo-pencil icon-color" ></span>
         </a>
       </td>
     </tr>
 
-    
   </table>
 
-</div>
 </body>
 </html>
 {% endautoescape %}

@@ -2,7 +2,7 @@
 {% autoescape true %}
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -28,37 +28,36 @@ window.onclick = function(event) {
 </head>
 <body>
 
-  <!-- HEADER -->
   <header class="block">
     <ul class="header-menu horizontal-list">
       <li>
-        <a class="header-menu-tab" href="/"><span class="icon entypo-home scnd-font-color"></span>Home</a>
+        <a class="header-menu-tab" href="/"><span class="icon entypo-home icon-color"></span>Home</a>
       </li>
       <li>
-        <a class="header-menu-tab" href="clients"><span class="icon entypo-folder scnd-font-color"></span>Clients</a>
+        <a class="header-menu-tab" href="clients"><span class="icon entypo-folder icon-color"></span>Clients</a>
       </li>
       <li>
-        <a class="header-menu-tab" href="projects"><span class="icon fontawesome-list-alt scnd-font-color"></span>Projects</a>
+        <a class="header-menu-tab" href="projects"><span class="icon fontawesome-list-alt icon-color"></span>Projects</a>
       </li>
       <li>
-        <a class="header-menu-tab" href="tasks"><span class="icon fontawesome-list-ul scnd-font-color"></span>Tasks</a>
+        <a class="header-menu-tab" href="tasks"><span class="icon fontawesome-list-ul icon-color"></span>Tasks</a>
       </li>
       <!--
       <li>
-        <a class="header-menu-tab" href=""><span class="icon entypo-bell scnd-font-color"></span>Notifications</a>
+        <a class="header-menu-tab" href=""><span class="icon entypo-bell icon-color"></span>Notifications</a>
         <a class="header-menu-number" href="">5</a>
       </li>
       -->
       <li>
-        <a class="header-menu-tab" href="admin"><span class="icon fontawesome-cogs scnd-font-color"></span>Admin</a>
+        <a class="header-menu-tab" href="admin"><span class="icon fontawesome-cogs icon-color"></span>Admin</a>
       </li>
   </ul>
 
   <div class="profile-menu">
-    <a id="qwert" href="javascript:myFunction()"> <p>{{ data.header.user.first_name () if data.header.user else "Noneserg" }}<span class="entypo-down-open scnd-font-color" style="margin-left:5px"></span></p> </a>
+    <a class="toggle-link" href="javascript:myFunction()"><p>{{ data.header.user.first_name () if data.header.user else "None" }}<span class="entypo-down-open icon-color" style="margin-left:5px"></span> </p></a>
 
     <div class="profile-picture small-profile-picture">
-        <img width="40px" alt="Anne Hathaway picture" src="static/icons/user.png">
+      <img width="40px" src="static/icons/user.png">
     </div>
 
     <div id="profile-dropdown" class="dropdown-content">

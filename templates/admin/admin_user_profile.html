@@ -46,13 +46,12 @@ function edit_save (field_name) {
 </head>
 <body>
 
-<div id="content">
   <h1>User Profile
     <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
-      <span class="edit-icon entypo-pencil scnd-font-color"></span>
+      <span class="edit-icon entypo-pencil icon-color"></span>
     </a>
-    <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
-      <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+    <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" hidden>
+      <span class="edit-icon fontawesome-remove icon-color"></span>
     </a>
   </h1>
 
@@ -77,14 +76,14 @@ function edit_save (field_name) {
             {% endif %}
           {% endfor %}
         </select>
-        <a class="edit-field-enable-btn" id="role-edit-btn" href="javascript:edit_enable ('role')" style="display:none;">
-          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        <a class="edit-field-enable-btn" id="role-edit-btn" href="javascript:edit_enable ('role')" hidden>
+          <span class="edit-icon entypo-pencil icon-color"></span>
         </a>
-        <a class="edit-field-save-btn" id ="role-save-btn" href="javascript:edit_save ('role')" style="display:none;">
-          <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+        <a class="edit-field-save-btn" id ="role-save-btn" href="javascript:edit_save ('role')" hidden>
+          <span class="edit-icon fontawesome-ok icon-color"></span>
         </a>
-        <a class="edit-field-cancel-btn" id="role-cancel-btn" href="javascript:edit_cancel ('role')" style="display:none;">
-          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        <a class="edit-field-cancel-btn" id="role-cancel-btn" href="javascript:edit_cancel ('role')" hidden>
+          <span class="edit-icon fontawesome-remove icon-color"></span>
         </a>
       </td>
     </tr>
@@ -99,21 +98,20 @@ function edit_save (field_name) {
             {% endif %}
           {% endfor %}
         </select>
-        <a class="edit-field-enable-btn" id="status-edit-btn" href="javascript:edit_enable ('status')" style="display:none;">
-          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        <a class="edit-field-enable-btn" id="status-edit-btn" href="javascript:edit_enable ('status')" hidden>
+          <span class="edit-icon entypo-pencil icon-color"></span>
         </a>
-        <a class="edit-field-save-btn" id ="status-save-btn" href="javascript:edit_save ('status')" style="display:none;">
-          <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+        <a class="edit-field-save-btn" id ="status-save-btn" href="javascript:edit_save ('status')" hidden>
+          <span class="edit-icon fontawesome-ok icon-color"></span>
         </a>
-        <a class="edit-field-cancel-btn" id="status-cancel-btn" href="javascript:edit_cancel ('status')" style="display:none;">
-          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        <a class="edit-field-cancel-btn" id="status-cancel-btn" href="javascript:edit_cancel ('status')" hidden>
+          <span class="edit-icon fontawesome-remove icon-color"></span>
         </a>
       </td>
     </tr>
 
   </table>
 
-</div>
 </body>
 </html>
 {% endautoescape %}

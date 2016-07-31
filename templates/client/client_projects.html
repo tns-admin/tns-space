@@ -7,29 +7,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script type="text/javascript">
-function edit_enable_all () {
-  $(".delete-col").show ();
-  $("#main-pen").hide ();
-  $("#main-cross").show ();
-}
 
-function edit_disable_all () {
-  $(".delete-col").hide ();
-  $("#main-cross").hide ();
-  $("#main-pen").show ();
-}
+function toggle_create_project ()
+{
+  $("#create_project").slideToggle ("fast");
+  $("#toggle_arrow_down").toggle (0);
+  $("#toggle_arrow_up").toggle (0);
 
-function delete_attachment (id) {
-  alert ("Deleting agreement [" + id + "]");
+  document.getElementById ("custom").value = $("#custom-search").is (":visible");
 }
-
-$("document").ready(function(){
-  $("#uploadBtn").change(function() {
-    if (this.value) {
-      alert('Uploaded file [' + this.value + ']');
-    }
-  });
-});
 
 </script>
 </head>
@@ -37,77 +23,97 @@ $("document").ready(function(){
 
 <div id="content">
 
-  <table width=100%>
+  <table class="markup-table">
   <tr>
     <td>
-      <h1>Projects
-        <a id="main-pen" href="javascript:edit_enable_all ()">
-          <span class="edit-icon entypo-pencil scnd-font-color"></span>
-        </a>
-        <a id="main-cross" href="javascript:edit_disable_all ()" style="display:none;">
-          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
-        </a>
-      </h1>
+      <h1>Projects</h1>
     </td>
-    <td>
-      <div class="fileUpload btn btn-primary" style="float:right;">
-          <span>Crete New</span>
-          <input id="uploadBtn" type="file" class="upload" />
-      </div>
+    <td style="text-align:right;">
+      <h1>Pasha Tushkanchik</h1>
     </td>
   </tr>
   </table>
-  <table class="results-table" width=100%>
+
+  <div>
+    <a class="toggle-link" href="javascript:toggle_create_project ()">
+      Create New Project
+      <span id="toggle_arrow_down" class="entypo-down-open toggle-arrow"></span>
+      <span id="toggle_arrow_up" class="entypo-up-open toggle-arrow" hidden></span>
+    </a>
+  </div>
+
+  <div id="create_project" hidden>
+    <table class = "form-table">
+      <tr>
+        <td style="width:10%">Code</td>
+        <td>
+          <select style="margin-right:30px">
+            <option disabled>Select project code</option>
+            <option value="SA">Self Assessment</option>
+            <option value="CB">Child Benefit</option>
+            <option value="ATR">Annual Tax Return</option>
+          </select>
+          <span>Due Date</span>
+          <input type="date" name="due_date" style="width:130px; margin-right:30px">
+          <span>Owner</span>
+          <input type="text" name="owner" value = "Tatiana Gutu" style="width:159px" readonly>
+        </td>
+      </tr>
+      <tr>
+        <td>Title</td>
+        <td>
+          <input type="text" name="title" value="Enter project title" style="width:100%;">
+        </td>
+      </tr>
+      <tr>
+        <td>Desc</td>
+        <td>
+          <textarea style="height: 100px" type="text"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input class="submit-button" type="submit" value="Create"/>
+        </td>
+        <td>
+          <a class="toggle-link" style="margin-left:10px; font-size: 17px;" href="clients">Cancel</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <hr/>
+
+  <table class="results-table">
     <tr>
-      <th style="width: 5%; text-align: center;">Type</th>
-      <th style="width: 55%; text-align: center;">Project</th>
-      <th style="width: 10%; text-align: center;">Status</th>
-      <th style="width: 20%; text-align: center;">Due Date</th>
-      <th class="delete-col" style="text-align: center; display:none;">Delete</th>
+      <th style="width: 10%">Type</th>
+      <th style="width: 50%">Title</th>
+      <th style="width: 20%">Status</th>
+      <th style="width: 20%">Due Date</th>
     </tr>
     <tr>
       <td>SA</td>
-      <td style="text-align: left;"><a href="project">Self Assessment 2015</a></td>
+      <td><a href="project">Self Assessment 2015</a></td>
       <td>Overdue</td>
       <td>10 Feb 2015</td>
-      <td class="delete-col" style="display:none;">
-        <a href="javascript:delete_attachment (1)">
-          <span class="edit-icon entypo-trash scnd-font-color"></span>
-        </a>
-      </td>
     </tr>
     <tr>
       <td>CB</td>
-      <td style="text-align: left;"><a href="project">Child Benefit</a></td>
+      <td><a href="project">Child Benefit</a></td>
       <td>In Progress</td>
       <td>10 Feb 2015</td>
-      <td class="delete-col" style="display:none;">
-        <a href="javascript:delete_attachment (2)">
-          <span class="edit-icon entypo-trash scnd-font-color"></span>
-        </a>
-      </td>
     </tr>
     <tr>
       <td>SA</td>
-      <td style="text-align: left;"><a href="project">Self Assessment 2016</a></td>
+      <td><a href="project">Self Assessment 2016</a></td>
       <td>In Progress</td>
       <td>10 Feb 2016</td>
-      <td class="delete-col" style="display:none;">
-        <a href="javascript:delete_attachment (3)">
-          <span class="edit-icon entypo-trash scnd-font-color"></span>
-        </a>
-      </td>
     </tr>
     <tr>
       <td>ATR</td>
-      <td style="text-align: left;"><a href="project">Annual Tax Return Apr 2016</a></td>
+      <td><a href="project">Annual Tax Return Apr 2016</a></td>
       <td>Completed</td>
       <td>10 Feb 2015</td>
-      <td class="delete-col" style="display:none;">
-        <a href="javascript:delete_attachment (4)">
-          <span class="edit-icon entypo-trash scnd-font-color"></span>
-        </a>
-      </td>
     </tr>
   </table>
 

@@ -2,10 +2,10 @@
 {% autoescape true %}
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/scripts/edit_page.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/edit_page.js"></script>
 
 <script type="text/javascript">
 
@@ -45,11 +45,11 @@ function edit_save (field_name) {
 
 function toggle_add_note ()
 {
-    $("#add-note").toggle ("show");
-    $("#down-arrow").toggle ("show");
-    $("#up-arrow").toggle ("show");
+  $("#add_note").slideToggle ("fast");
+  $("#toggle_arrow_down").toggle (0);
+  $("#toggle_arrow_up").toggle (0);
 
-    document.getElementById ("custom").value = $("#custom-search").is (":visible");
+  document.getElementById ("custom").value = $("#custom-search").is (":visible");
 }
 
 </script>
@@ -57,18 +57,18 @@ function toggle_add_note ()
 {% set proj_colors = {"Completed": "#00FF00", "In progress": "#FFFF00", "Overdue": "#FF0000"} %}
 
 </head>
+
 <body>
 
-<div id="content">
-  <table class="form-table">
+  <table class="markup-table">
     <tr>
       <td>
         <h1>General Info
           <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
-            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+            <span class="edit-icon entypo-pencil icon-color"></span>
           </a>
-          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
-            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" hidden>
+            <span class="edit-icon fontawesome-remove icon-color"></span>
           </a>
         </h1>
       </td>
@@ -76,22 +76,22 @@ function toggle_add_note ()
     </tr>
     <tr>
       <td>
-        <label style="margin-left:10px">Consultant</label>
+        <label>Consultant</label>
         
-        <select id="consultant" style="margin-left:10px; width:150px" disabled>
+        <select id="consultant" style="margin-left:10px" disabled>
           {% for id, cons in data.general.consultants.iteritems () %}
             <option value="{{ id }}" {% if id == data.general.consultant %} selected {% endif %}>{{ cons.name }}</option>
           {% endfor %}
         </select>
 
-        <a class="edit-field-enable-btn" id="consultant-edit-btn" href="javascript:edit_enable ('consultant')" style="display:none;">
-          <span class="edit-icon entypo-pencil scnd-font-color"></span>
+        <a class="edit-field-enable-btn" id="consultant-edit-btn" href="javascript:edit_enable ('consultant')" hidden>
+          <span class="edit-icon entypo-pencil icon-color"></span>
         </a>
-        <a class="edit-field-save-btn" id ="consultant-save-btn" href="javascript:edit_save ('consultant')" style="display:none;">
-          <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+        <a class="edit-field-save-btn" id ="consultant-save-btn" href="javascript:edit_save ('consultant')" hidden>
+          <span class="edit-icon fontawesome-ok icon-color"></span>
         </a>
-        <a class="edit-field-cancel-btn" id="consultant-cancel-btn" href="javascript:edit_cancel ('consultant')" style="display:none;">
-          <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+        <a class="edit-field-cancel-btn" id="consultant-cancel-btn" href="javascript:edit_cancel ('consultant')" hidden>
+          <span class="edit-icon fontawesome-remove icon-color"></span>
         </a>
       </td>
       <td style="text-align:right;">
@@ -100,58 +100,60 @@ function toggle_add_note ()
       </td>
     </tr>
   </table>
+  
   <hr/>
 
-  <table class="form-table" style="width: 100%">
+  <table class="markup-table">
     <tr>
       <td style="width: 50%">
-        <table>
+        <table class="form-table" style="padding-right:10px;">
           <tr>
             <th colspan=2>Projects</th>
           </tr>
            {% for proj in data.general.projects %}
             <tr>
-              <td style = "text-align: left; width: 75%"> <a href"#"><span>{{proj.title}}</span></a></td>
-              <td style = "text-align: left;"><span style="color:{{proj_colors[proj.status]}}";>{{ proj.status }}</span></td>
+              <td style="width: 70%"> <a href"#"><span>{{proj.title}}</span></a></td>
+              <td><span style="color:{{proj_colors[proj.status]}}">{{ proj.status }}</span></td>
             </tr>
           {% endfor %}
           <tr>
-            <td style = "text-align: left;"><a href="#">View all {{ data.general.total_projects }} project(s)</a></td>
+            <td><a href="#">View all {{ data.general.total_projects }} project(s)</a></td>
             <td></td>
           </tr>
         </table>
+
       </td>
       <td style="width: 50%">
-        <table>
+        <table class="form-table">
           <tr>
             <th colspan=2>Payments</th>
           </tr>
           <tr>
-            <td style = "text-align: left;">Xero ID</td>
-            <td style = "text-align: left;">
-              <input style="margin-left:10px; width:100px" type="text" id="xero_id" value="{{ data.general.payments.xero_id }}" disabled>
-              <a class="edit-field-enable-btn" id="xero_id-edit-btn" href="javascript:edit_enable ('xero_id')" style="display:none;">
-                <span class="edit-icon entypo-pencil scnd-font-color"></span>
+            <td style="width: 40%">Xero ID</td>
+            <td>
+              <input type="text" id="xero_id" style="width: 100px" value="{{ data.general.payments.xero_id }}" disabled>
+              <a class="edit-field-enable-btn" id="xero_id-edit-btn" href="javascript:edit_enable ('xero_id')" hidden>
+                <span class="edit-icon entypo-pencil icon-color"></span>
               </a>
-              <a class="edit-field-save-btn" id ="xero_id-save-btn" href="javascript:edit_save ('xero_id')" style="display:none;">
-                <span class="edit-icon fontawesome-ok scnd-font-color"></span>
+              <a class="edit-field-save-btn" id ="xero_id-save-btn" href="javascript:edit_save ('xero_id')" hidden>
+                <span class="edit-icon fontawesome-ok icon-color"></span>
               </a>
-              <a class="edit-field-cancel-btn" id="xero_id-cancel-btn" href="javascript:edit_cancel ('xero_id')" style="display:none;">
-                <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+              <a class="edit-field-cancel-btn" id="xero_id-cancel-btn" href="javascript:edit_cancel ('xero_id')" hidden>
+                <span class="edit-icon fontawesome-remove icon-color"></span>
               </a>
             </td>
           </tr>
           <tr>
-            <td style = "text-align: left;">Total invoices</td>
-            <td style = "text-align: left;">{{ data.general.payments.total_invoices }}</td>
+            <td>Total invoices</td>
+            <td>{{ data.general.payments.total_invoices }}</td>
           </tr>
           <tr>
-            <td style = "text-align: left;">Unpaid</td>
-            <td style = "text-align: left;">{{ data.general.payments.unpaid_invoices }}</td>
+            <td>Unpaid</td>
+            <td>{{ data.general.payments.unpaid_invoices }}</td>
           </tr>
           <tr>
-            <td style = "text-align: left;">Overdue</td>
-            <td style = "text-align: left;">{{ data.general.payments.overdue_invoices }}</td>
+            <td>Overdue</td>
+            <td>{{ data.general.payments.overdue_invoices }}</td>
           </tr>
         </table>
       </td>
@@ -161,24 +163,25 @@ function toggle_add_note ()
   <hr/>
 
   <div>
-    <a href="javascript:toggle_add_note ()">Add note</a>
-    <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
-    <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+    <a class="toggle-link" href="javascript:toggle_add_note ()">
+      Add note
+      <span id="toggle_arrow_down" class="entypo-down-open toggle-arrow"></span>
+      <span id="toggle_arrow_up" class="entypo-up-open toggle-arrow" hidden></span>
+    </a>
   </div>
 
-  <div id="add-note" style="display:none">
-    <textarea style="margin-top:20px; width: 100%; height: 100px" type="text"></textarea>
-    <button type="button" class="submit_button" style="float:right;">Add note</button>
+  <div id="add_note" style="margin:10px 0px 10px 0px; overflow:hidden" hidden>
+    <textarea style="height: 100px" type="text"></textarea>
+    <button type="button" class="submit-button" style="float:right;">Add note</button>
   </div>
 
-  <div style= "width: 100%; height: 400px; overflow-y: scroll; border-style: ridge; border-width: 2px; margin-top:10px">
+  <div class="notes-container">
     {% for note in data.general.notes %}
       <b>{{ note.timestamp }} {{ note.user_name}}</b><br/>
       {{ note.text}}<br/><hr/>
     {% endfor %}
   </div>
 
-</div>
 </body>
 </html>
 {% endautoescape %}

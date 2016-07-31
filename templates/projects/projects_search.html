@@ -2,18 +2,17 @@
 {% autoescape true %}
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
 <script type="text/javascript">
 
 function toggle_custom_search ()
 {
-    $("#custom-search").toggle ("show");
-    $("#down-arrow").toggle ("show");
-    $("#up-arrow").toggle ("show");
+  $("#custom_search").slideToggle ("fast");
+  $("#toggle_arrow_down").toggle (0);
+  $("#toggle_arrow_up").toggle (0);
 
-    document.getElementById ("custom").value = $("#custom-search").is (":visible");
+  document.getElementById ("custom").value = $("#custom_search").is (":visible");
 }
 
 function on_page_load ()
@@ -32,33 +31,34 @@ window.onload = on_page_load;
 
 </head>
 
-
 <body>
   <div>
-      <a href="javascript:toggle_custom_search ()">Custom search</a>
-      <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
-      <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+    <a class="toggle-link" href="javascript:toggle_custom_search ()">
+      Custom search
+      <span id="toggle_arrow_down" class="entypo-down-open icon-color toggle-arrow"></span>
+      <span id="toggle_arrow_up" class="entypo-up-open icon-color toggle-arrow" hidden></span>
+    </a>
   </div>
 
-  <div id="custom-search" style="display:none">
+  <div id="custom_search" hidden>
 
-    <form>
+    <form class="form-table">
       <input type="hidden" name="page" value="search">
       <input type="hidden" id="custom" name="custom" value="0">
       <table class="form-table">
         <tr>
-          <td width="150px">
+          <td width=80px>
             Code
           </td>
-          <td width="120px">
-            <select name="code">
+          <td width=270px>
+            <select name="code" style="width:230px">
               <option value="" selected></option>
                 {% for code in data.page.project_codes %}
                   <option value={{ code.id () }}>{{ code.abbr () }} - {{ code.title () }}</option>
                 {% endfor %}
             </select>
           <td>
-          <td>
+          <td width=80px>
             Status
           </td>
           <td>
@@ -75,7 +75,7 @@ window.onload = on_page_load;
             Owner
           </td>
           <td>
-            <select name="consultant">
+            <select name="consultant" style="width:230px">
               <option value="" selected></option>
                 {% for user_id, user_name in data.page.users.iteritems () %}
                   <option value={{ user_id }}>{{ user_name }}</option>
@@ -84,16 +84,16 @@ window.onload = on_page_load;
           <td>
           <td></td>
           <td>
-            <input class="submit_button" type="submit" value="Search">
+            <input class="submit-button" type="submit" value="Search">
           </td>
         </tr>
       </table>
     </form>
-
   </div>
 
-  <div>
-  <table class = "results-table" width=720px>
+  <hr/>
+
+  <table class="results-table">
       <tr>
           <th>Code</th>
           <th>Title</th>
@@ -115,7 +115,6 @@ window.onload = on_page_load;
           </tr>
       {% endfor %}
   </table>
-  </div>
 </body>
 </html>
 {% endautoescape %}

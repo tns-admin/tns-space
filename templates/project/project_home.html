@@ -2,32 +2,32 @@
 {% autoescape true %}
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/scripts/edit_page.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="/scripts/edit_page.js"></script>
 
 <script type="text/javascript">
 
 function toggle_tasks ()
 {
-  $("#tasks-div").toggle ("show");
-  $("#tasks-down-arrow").toggle ("show");
-  $("#tasks-up-arrow").toggle ("show");
+  $("#tasks-div").slideToggle ("fase");
+  $("#tasks-down-arrow").toggle (0);
+  $("#tasks-up-arrow").toggle (0);
 }
 
 function toggle_attachments ()
 {
-  $("#attachments-div").toggle ("show");
-  $("#attachments-down-arrow").toggle ("show");
-  $("#attachments-up-arrow").toggle ("show");
+  $("#attachments-div").slideToggle ("fast");
+  $("#attachments-down-arrow").toggle (0);
+  $("#attachments-up-arrow").toggle (0);
 }
 
 function toggle_add_note ()
 {
-    $("#add-note").toggle ("show");
-    $("#down-arrow").toggle ("show");
-    $("#up-arrow").toggle ("show");
+    $("#add-note").slideToggle ("fast");
+    $("#down-arrow").toggle (0);
+    $("#up-arrow").toggle (0);
 
     document.getElementById ("custom").value = $("#custom-search").is (":visible");
 }
@@ -37,16 +37,15 @@ function toggle_add_note ()
 </head>
 <body>
 
-<div id="content">
-  <table class="form-table">
+  <table class="markup-table">
     <tr>
       <td style="width=80%">
         <h1>Self Assessment 2015
           <a id="edit-page-enable-btn" href="javascript:edit_page_enable ()">
-            <span class="edit-icon entypo-pencil scnd-font-color"></span>
+            <span class="edit-icon entypo-pencil icon-color"></span>
           </a>
-          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" style="display:none;">
-            <span class="edit-icon fontawesome-remove scnd-font-color"></span>
+          <a id="edit-page-disable-btn" href="javascript:edit_page_disable ()" hidden>
+            <span class="edit-icon fontawesome-remove icon-color"></span>
           </a>
         </h1>
       </td>
@@ -76,10 +75,14 @@ function toggle_add_note ()
     </tr>
   </table>
 
+  <hr/>
+
   <div>
-      <a href="javascript:toggle_tasks ()">Tasks</a>
-      <span id="tasks-down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px; display:none"></span>
-      <span id="tasks-up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px"></span>
+      <a class="toggle-link" href="javascript:toggle_tasks ()">
+        Tasks
+        <span id="tasks-down-arrow" class="entypo-down-open icon-color toggle-arrow" hidden></span>
+        <span id="tasks-up-arrow" class="entypo-up-open icon-color toggle-arrow"></span>
+      </a>
   </div>
 
 
@@ -122,15 +125,19 @@ function toggle_add_note ()
     </table>
   </div>
 
+  <hr/>
+
   <div>
-      <a href="javascript:toggle_attachments ()">Attachments</a>
-      <span id="attachments-down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px;"></span>
-      <span id="attachments-up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+      <a  class="toggle-link" href="javascript:toggle_attachments ()">
+        Attachments
+        <span id="attachments-down-arrow" class="entypo-down-open icon-color toggle-arrow" ></span>
+        <span id="attachments-up-arrow" class="entypo-up-open icon-color toggle-arrow" hidden></span>
+      </a>
   </div>
 
 
-  <div id="attachments-div" style="display:none">
-    <table class = "results-table" width=720px>
+  <div id="attachments-div" hidden>
+    <table class = "results-table">
       <tr>
         <th>Title</th>
         <th>Who uploaded</th>
@@ -163,18 +170,22 @@ function toggle_add_note ()
     </table>
   </div>
 
+  <hr/>
+
   <div>
-    <a href="javascript:toggle_add_note ()">Add note</a>
-    <span id="down-arrow" class="entypo-down-open scnd-font-color" style="margin-left:5px"></span>
-    <span id="up-arrow" class="entypo-up-open scnd-font-color" style="margin-left:5px;display:none"></span>
+    <a  class="toggle-link" href="javascript:toggle_add_note ()">
+      Add note
+      <span id="down-arrow" class="entypo-down-open icon-color toggle-arrow"></span>
+      <span id="up-arrow" class="entypo-up-open icon-color toggle-arrow" hidden></span>
+    </a>
   </div>
 
-  <div id="add-note" style="display:none">
-    <textarea style="margin-top:20px; width: 100%; height: 100px" type="text"></textarea>
-    <button type="button" class="submit_button" style="float:right;">Add note</button>
+  <div id="add-note" style="overflow:hidden" hidden>
+    <textarea style="margin-top:10px; width: 100%; height: 100px" type="text"></textarea>
+    <button type="button" class="submit-button" style="float:right;">Add note</button>
   </div>
 
-  <div style= "width: 100%; height: 400px; overflow-y: scroll; border-style: ridge; border-width: 2px; margin-top:10px">
+  <div class="notes-container">
       <b>18/01/2016  Svetlana Onofrei</b><br/>
       Project specific notes should go to the corresponding project. Same for tasks. Only general client notes should be here.<br/><hr/>
 
@@ -188,8 +199,6 @@ function toggle_add_note ()
       <b>18/01/2016 Tatiana Gutu</b><br/>
       Maybe add notes here.<br/><hr/>
   </div>
-
-</div>
 
 </body>
 </html>

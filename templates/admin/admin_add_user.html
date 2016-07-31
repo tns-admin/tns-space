@@ -83,13 +83,13 @@ function add_user ()
 
 <div>
   <input type="text" id="username">@tnstax.co.uk
-  <button onclick="validate_username()" class="fileUpload btn btn-primary">Validate</button>
+  <button onclick="validate_username()" class="submit-button">Validate</button>
 
-  <div id='invalid-user' style="display:none;">
+  <div id='invalid-user' hidden>
     <p style="margin-left:10px"> <div id="validate-error-msg">Error msg</div></p>
   </div>
 
-  <div id='user-form' style="display:none;">
+  <div id='user-form' hidden>
     <input type="hidden" id="user_email">
     <table class="form-table">
       <tr>
@@ -109,12 +109,12 @@ function add_user ()
       </tr>
     </table>
 
-    <button onclick="add_user()" class="submit_button">Add User</button>
+    <button onclick="add_user()" class="submit-button">Add User</button>
 
-    <a style="margin-left:20px; font-size: 17px;" href="admin?page=users">Cancel</a>
+    <a class="toggle-link" href="admin?page=users">Cancel</a>
     <br>
 
-    <div id='add-user-failed' style="display:none;">
+    <div id='add-user-failed' hidden>
       <div id="add-user-failed-msg">Error msg</div>
     </div>
   </div>
